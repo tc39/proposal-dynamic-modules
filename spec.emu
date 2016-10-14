@@ -64,7 +64,7 @@ contributors: Caridy Patiño
 <!-- es6num="8.1.1.5.5" -->
 <emu-clause id="sec-createimportbinding">
   <h1>CreateImportBinding (_N_, _M_, _N2_)</h1>
-  <p>The concrete Environment Record method CreateImportBinding for module Environment Records creates a new initialized immutable indirect binding for the name _N_. A binding must not already exist in this Environment Record for _N_. _M_ is a Module Record, and _N2_ is the name of a binding that <ins>have to exist</ins><del>exists</del> in M's module Environment Record<ins> after _M_ is evaluated</ins>. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</p>
+  <p>The concrete Environment Record method CreateImportBinding for module Environment Records creates a new initialized immutable indirect binding for the name _N_. A binding must not already exist in this Environment Record for _N_. _M_ is a Module Record, and _N2_ is the name of a binding that <ins>has to exist</ins><del>exists</del> in M's module Environment Record<ins> after _M_ is evaluated</ins>. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</p>
 
   <emu-alg>
   1. Let _envRec_ be the module Environment Record for which the method was invoked.
@@ -72,7 +72,7 @@ contributors: Caridy Patiño
   1. Assert: _M_ is a Module Record.
   1. <ins>Assert: _M_ is an instantiated Module Record.</ins>
   1. <del>Assert: When _M_.[[Environment]] is instantiated it will have a direct binding for _N2_.<del>
-  1. <ins>Assert: If _M_ is a Source Text Module Record, then _M_.[[Environment]] have a direct binding for _N2_.<ins>
+  1. <ins>Assert: If _M_ is a Source Text Module Record, then _M_.[[Environment]] has a direct binding for _N2_.<ins>
   1. Create an immutable indirect binding in _envRec_ for _N_ that references _M_ and _N2_ as its target binding and record that the binding is initialized.
   1. Return NormalCompletion(~empty~).
   </emu-alg>

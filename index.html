@@ -178,7 +178,7 @@
 		<p>The concrete
 			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> method CreateImportBinding for module Environment Records creates a new initialized immutable indirect binding for the name <var>N</var>. A binding must not already exist in this
 			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> for <var>N</var>. <var>M</var> is a
-			<emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>, and <var>N2</var> is the name of a binding that <ins>have to exist</ins><del>exists</del> in M's module
+			<emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>, and <var>N2</var> is the name of a binding that <ins>has to exist</ins><del>exists</del> in M's module
 			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref><ins> after <var>M</var> is evaluated</ins>. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</p>
 
 		<emu-alg>
@@ -191,7 +191,7 @@
 				<li><ins>Assert: <var>M</var> is an instantiated <emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>.</ins></li>
 				<li><del>Assert: When <var>M</var>.[[Environment]] is instantiated it will have a direct binding for <var>N2</var>.<del></del></del>
 				</li>
-				<li><ins>Assert: If <var>M</var> is a <emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref>, then <var>M</var>.[[Environment]] have a direct binding for <var>N2</var>.<ins></ins></ins>
+				<li><ins>Assert: If <var>M</var> is a <emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref>, then <var>M</var>.[[Environment]] has a direct binding for <var>N2</var>.<ins></ins></ins>
 				</li>
 				<li>Create an immutable indirect binding in <var>envRec</var> for <var>N</var> that references <var>M</var> and <var>N2</var> as its target binding and record that the binding is initialized.</li>
 				<li>Return
