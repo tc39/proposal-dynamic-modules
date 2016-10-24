@@ -17,11 +17,21 @@
 			"key": "Table 1: Additional Fields of Source Text Module Records"
 		}, {
 			"type": "clause",
+			"id": "sec-module-namespace-exotic-objects-get-p-receiver",
+			"aoid": null,
+			"title": "[[Get]] (P, Receiver)",
+			"titleHTML": "[[Get]] (<var>P</var>, <var>Receiver</var>)",
+			"number": "1",
+			"namespace": "<no location>",
+			"location": "",
+			"key": "[[Get]] (P, Receiver)"
+		}, {
+			"type": "clause",
 			"id": "sec-createimportbinding",
 			"aoid": null,
 			"title": "CreateImportBinding (N, M, N2)",
 			"titleHTML": "CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)",
-			"number": "1",
+			"number": "2",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "CreateImportBinding (N, M, N2)"
@@ -31,7 +41,7 @@
 			"aoid": null,
 			"title": "ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method",
 			"titleHTML": "ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method",
-			"number": "2",
+			"number": "3",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"
@@ -41,7 +51,7 @@
 			"aoid": null,
 			"title": "ModuleDeclarationInstantiation( ) Concrete Method",
 			"titleHTML": "ModuleDeclarationInstantiation( ) Concrete Method",
-			"number": "3",
+			"number": "4",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "ModuleDeclarationInstantiation( ) Concrete Method"
@@ -51,7 +61,7 @@
 			"aoid": null,
 			"title": "ModuleEvaluation() Concrete Method",
 			"titleHTML": "ModuleEvaluation() Concrete Method",
-			"number": "4",
+			"number": "5",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "ModuleEvaluation() Concrete Method"
@@ -67,7 +77,7 @@
 			"aoid": "ParseModule",
 			"title": "ParseModule ( sourceText, realm, hostDefined )",
 			"titleHTML": "ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )",
-			"number": "5",
+			"number": "6",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "ParseModule ( sourceText, realm, hostDefined )"
@@ -93,16 +103,17 @@
 		</div>
 		<div id="menu-toc">
 			<ol class="toc">
-				<li><span class="item-toggle-none"></span><a href="#sec-createimportbinding" title="CreateImportBinding (N, M, N2)"><span class="secnum">1</span> CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-resolveexport" title="ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"><span class="secnum">2</span> ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-moduledeclarationinstantiation" title="ModuleDeclarationInstantiation( ) Concrete Method"><span class="secnum">3</span> ModuleDeclarationInstantiation( ) Concrete Method</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-moduleevaluation" title="ModuleEvaluation() Concrete Method"><span class="secnum">4</span> ModuleEvaluation() Concrete Method</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-parsemodule" title="ParseModule ( sourceText, realm, hostDefined )"><span class="secnum">5</span> ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-module-namespace-exotic-objects-get-p-receiver" title="[[Get]] (P, Receiver)"><span class="secnum">1</span> [[Get]] (<var>P</var>, <var>Receiver</var>)</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-createimportbinding" title="CreateImportBinding (N, M, N2)"><span class="secnum">2</span> CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-resolveexport" title="ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"><span class="secnum">3</span> ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-moduledeclarationinstantiation" title="ModuleDeclarationInstantiation( ) Concrete Method"><span class="secnum">4</span> ModuleDeclarationInstantiation( ) Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-moduleevaluation" title="ModuleEvaluation() Concrete Method"><span class="secnum">5</span> ModuleEvaluation() Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-parsemodule" title="ParseModule ( sourceText, realm, hostDefined )"><span class="secnum">6</span> ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )</a></li>
 				<li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li>
 			</ol>
 		</div>
 	</div>
-	<h1 class="version">Stage 0 Draft / October 14, 2016</h1>
+	<h1 class="version">Stage 0 Draft / October 24, 2016</h1>
 	<h1 class="title">dynamic modules reform</h1>
 
 	<!-- es6num="15.2.1.16" -->
@@ -171,9 +182,52 @@
 		</figure>
 	</emu-table>
 
+	<!-- es6num="9.4.6.8" -->
+	<emu-clause id="sec-module-namespace-exotic-objects-get-p-receiver">
+		<h1><span class="secnum">1</span>[[Get]] (<var>P</var>, <var>Receiver</var>)<span class="utils"><span class="anchor"><a href="#sec-module-namespace-exotic-objects-get-p-receiver">#</a></span></span>
+		</h1>
+		<p>When the [[Get]] internal method of a module namespace exotic object <var>O</var> is called with property key <var>P</var> and
+			<emu-xref href="#sec-ecmascript-language-types"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-types">ECMAScript language value</a></emu-xref> <var>Receiver</var>, the following steps are taken:</p>
+		<emu-alg>
+			<ol>
+				<li>Assert:
+					<emu-xref aoid="IsPropertyKey"><a href="https://tc39.github.io/ecma262/#sec-ispropertykey">IsPropertyKey</a></emu-xref>(<var>P</var>) is
+					<emu-val>true</emu-val>.</li>
+				<li>If
+					<emu-xref aoid="Type"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>P</var>) is Symbol, then
+					<ol>
+						<li>Return ? OrdinaryGet(<var>O</var>, <var>P</var>, <var>Receiver</var>).</li>
+					</ol>
+				</li>
+				<li>Let <var>exports</var> be <var>O</var>.[[Exports]].</li>
+				<li>If <var>P</var> is not an element of <var>exports</var>, return
+					<emu-val>undefined</emu-val>.</li>
+				<li>Let <var>m</var> be <var>O</var>.[[Module]].</li>
+				<li>Let <var>binding</var> be ! <var>m</var>.ResolveExport(<var>P</var>, « », « »).</li>
+				<li><del>Assert: <var>binding</var> is neither <emu-val>null</emu-val> nor <code>"ambiguous"</code>.</del></li>
+				<li><ins>If <var>binding</var> is "pending" or <var>binding</var> is <emu-val>null</emu-val> or resolution is "ambiguous", throw a <emu-val>SyntaxError</emu-val> exception.</ins></li>
+				<li>Let <var>targetModule</var> be <var>binding</var>.[[Module]].</li>
+				<li>Assert: <var>targetModule</var> is not
+					<emu-val>undefined</emu-val>.</li>
+				<li>Let <var>targetEnv</var> be <var>targetModule</var>.[[Environment]].</li>
+				<li>If <var>targetEnv</var> is
+					<emu-val>undefined</emu-val>, throw a
+					<emu-val>ReferenceError</emu-val> exception.</li>
+				<li>Let <var>targetEnvRec</var> be <var>targetEnv</var>'s
+					<emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li>
+				<li>Return ? <var>targetEnvRec</var>.GetBindingValue(<var>binding</var>.[[BindingName]],
+					<emu-val>true</emu-val>).
+				</li>
+			</ol>
+		</emu-alg>
+		<emu-note><span class="note">Note</span>
+			<p>ResolveExport is idempotent and side-effect free. An implementation might choose to pre-compute or cache the ResolveExport results for the [[Exports]] of each module namespace exotic object.</p>
+		</emu-note>
+	</emu-clause>
+
 	<!-- es6num="8.1.1.5.5" -->
 	<emu-clause id="sec-createimportbinding">
-		<h1><span class="secnum">1</span>CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)<span class="utils"><span class="anchor"><a href="#sec-createimportbinding">#</a></span></span>
+		<h1><span class="secnum">2</span>CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)<span class="utils"><span class="anchor"><a href="#sec-createimportbinding">#</a></span></span>
 		</h1>
 		<p>The concrete
 			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> method CreateImportBinding for module Environment Records creates a new initialized immutable indirect binding for the name <var>N</var>. A binding must not already exist in this
@@ -204,7 +258,7 @@
 
 	<!-- es6num="15.2.1.16.3" -->
 	<emu-clause id="sec-resolveexport">
-		<h1><span class="secnum">2</span>ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-resolveexport">#</a></span></span>
+		<h1><span class="secnum">3</span>ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-resolveexport">#</a></span></span>
 		</h1>
 		<p>The ResolveExport concrete method of a
 			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> with arguments <var>exportName</var>, <var>resolveSet</var>, and <var>exportStarSet</var> performs the following steps:</p>
@@ -316,7 +370,7 @@
 
 	<!-- es6num="15.2.1.16.4" -->
 	<emu-clause id="sec-moduledeclarationinstantiation">
-		<h1><span class="secnum">3</span>ModuleDeclarationInstantiation( ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduledeclarationinstantiation">#</a></span></span>
+		<h1><span class="secnum">4</span>ModuleDeclarationInstantiation( ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduledeclarationinstantiation">#</a></span></span>
 		</h1>
 		<p>The ModuleDeclarationInstantiation concrete method of a
 			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> performs the following steps:</p>
@@ -443,7 +497,7 @@
 
 	<!-- es6num="15.2.1.16.5" -->
 	<emu-clause id="sec-moduleevaluation">
-		<h1><span class="secnum">4</span>ModuleEvaluation() Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduleevaluation">#</a></span></span>
+		<h1><span class="secnum">5</span>ModuleEvaluation() Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduleevaluation">#</a></span></span>
 		</h1>
 		<p>The ModuleEvaluation concrete method of a
 			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> performs the following steps:</p>
@@ -506,7 +560,7 @@
 
 	<!-- es6num="15.2.1.16.1" -->
 	<emu-clause id="sec-parsemodule" aoid="ParseModule">
-		<h1><span class="secnum">5</span>ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )<span class="utils"><span class="anchor"><a href="#sec-parsemodule">#</a></span></span>
+		<h1><span class="secnum">6</span>ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )<span class="utils"><span class="anchor"><a href="#sec-parsemodule">#</a></span></span>
 		</h1>
 		<p>The abstract operation ParseModule with arguments <var>sourceText</var>, <var>realm</var>, and <var>hostDefined</var> creates a
 			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> based upon the result of parsing <var>sourceText</var> as a
