@@ -61,6 +61,32 @@ contributors: Caridy Patiño
   </table>
 </emu-table>
 
+<!-- es6num="9.4.6.8" -->
+<emu-clause id="sec-module-namespace-exotic-objects-get-p-receiver">
+  <h1>[[Get]] (_P_, _Receiver_)</h1>
+  <p>When the [[Get]] internal method of a module namespace exotic object _O_ is called with property key _P_ and ECMAScript language value _Receiver_, the following steps are taken:</p>
+  <emu-alg>
+    1. Assert: IsPropertyKey(_P_) is *true*.
+    1. If Type(_P_) is Symbol, then
+      1. Return ? OrdinaryGet(_O_, _P_, _Receiver_).
+    1. Let _exports_ be _O_.[[Exports]].
+    1. If _P_ is not an element of _exports_, return *undefined*.
+    1. Let _m_ be _O_.[[Module]].
+    1. Let _binding_ be ! _m_.ResolveExport(_P_, &laquo; &raquo;, &laquo; &raquo;).
+    1. <del>Assert: _binding_ is neither *null* nor `"ambiguous"`.</del>
+    1. <ins>If _binding_ is "pending" or _binding_ is *null* or resolution is "ambiguous", throw a *SyntaxError* exception.</ins>
+    1. Let _targetModule_ be _binding_.[[Module]].
+    1. Assert: _targetModule_ is not *undefined*.
+    1. Let _targetEnv_ be _targetModule_.[[Environment]].
+    1. If _targetEnv_ is *undefined*, throw a *ReferenceError* exception.
+    1. Let _targetEnvRec_ be _targetEnv_'s EnvironmentRecord.
+    1. Return ? _targetEnvRec_.GetBindingValue(_binding_.[[BindingName]], *true*).
+  </emu-alg>
+  <emu-note>
+    <p>ResolveExport is idempotent and side-effect free. An implementation might choose to pre-compute or cache the ResolveExport results for the [[Exports]] of each module namespace exotic object.</p>
+  </emu-note>
+</emu-clause>
+
 <!-- es6num="8.1.1.5.5" -->
 <emu-clause id="sec-createimportbinding">
   <h1>CreateImportBinding (_N_, _M_, _N2_)</h1>
