@@ -12,7 +12,7 @@ ES module spec requires all Module Records to know all the exports during `Modul
 
 ## Preserving the order of evaluation for Dynamic Module Records
 
-This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allowed us to identify, during the linking phase, that there is a binding that could potentially be in TDZ and does not require explicit assertion during the linking phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that __eventually__ the imported bindings from the corresponding environment record will be pupulated, otherwise TDZ during runtime.
+This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that __eventually__ the imported bindings from the corresponding environment record will be pupulated, otherwise TDZ during runtime.
 
 ## Enabling Circular Dependencies with Dynamic Module Records
 
