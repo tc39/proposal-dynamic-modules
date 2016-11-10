@@ -10,7 +10,38 @@ This proposal is currently [stage 0](https://github.com/tc39/ecma262) of the [pr
 
 ES module spec requires all Module Records to know all the exports during `ModuleDeclarationInstantiation()`. This is needed to guarantee that the linking process (bindings from one module environment record to another) can be accomplish, and works very well for Source Text Module Records, but forces other dynamic modules (like Node CJS modules) to be evaluated during the `ModuleDeclarationInstantiation()` phase. As a result, it is impossible to preserve the order of evaluation.
 
-This proposal introduces a new internal slot `[[PendingImportEntries]]` on Source Text Module Records that can be used to track down the import entries that are coming from Dynamic Module Records that hasn't been evaluated yet. As a result, a Dynamic Module Record can resolve to `"pending"` during the `ModuleDeclarationInstantiation()` phase to signal that the validation or assertion about the bindings should be deferred to the ModuleEvaluation() phase for the Source Text Module Record importing from a Dynamic Module Record.
+## Preserving the order of evaluation for Dynamic Module Records
+
+This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allowed us to identify, during the linking phase, that there is a binding that could potentially be in TDZ and does not require explicit assertion during the linking phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that __eventually__ the imported bindings from the corresponding environment record will be pupulated, otherwise TDZ during runtime.
+
+## Enabling Circular Dependencies with Dynamic Module Records
+
+This change opens also enable us to match the semantics of NCJS when it comes to circular dependencies. The following example illustrates this:
+
+```js
+// even.js
+module.exports = function even(n) { ... require('odd')(n - 1) ... }
+
+// odd.js
+module.exports = function odd(n) { ... require('even')(n - 1) ... }
+```
+
+These CJS modules will work in Node independently of which one is imported first, the same applies if both are written as ESM. But if one of them is ESM and the other is CJS, with the currenct spec, we might get a static error depending on which one is imported first. E.g.:
+
+```js
+// even.js (ESM):
+import odd from "odd";
+export default function even() {  ... odd(n - 1) ... }
+
+// odd.js (DM)
+module.exports = function odd(n) { ... require('even')(n - 1) ... }
+```
+
+If the binding for `odd` in `even.js` is not validated until it is accessed, the NCJS semantics are preserved, and this example works independently of which one is imported first.
+
+## Compromises
+
+With this proposal, the statically verifiable mechanism promosed by ESM can only be enforced in a ESM that is importing from another ESM, and any interaction with Dynamic Module Records will rely on a runtime errors (TDZ when accessing named exports).
 
 ## Additional Information
 
