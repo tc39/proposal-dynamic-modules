@@ -12,7 +12,7 @@ ES module spec requires all Module Records to know all the exports during `Modul
 
 ## Preserving the order of evaluation for Dynamic Module Records
 
-This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that __eventually__ the imported bindings from the corresponding environment record is in TDZ until it gets populated by the Dynamic Module Record.
+This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that the imported bindings from the corresponding environment record is in TDZ until it gets populated by the Dynamic Module Record.
 
 ## Enabling Circular Dependencies with Dynamic Module Records
 
@@ -20,21 +20,37 @@ This change also enable us to match the semantics of NCJS when it comes to circu
 
 ```js
 // even.js
-module.exports = function even(n) { ... require('odd')(n - 1) ... }
+module.exports = function even(n) {
+    ...
+    require('odd')(n - 1)
+    ...
+}
 
 // odd.js
-module.exports = function odd(n) { ... require('even')(n - 1) ... }
+module.exports = function odd(n) {
+    ...
+    require('even')(n - 1)
+    ...
+}
 ```
 
-These CJS modules will work in Node independently of which one is imported first, the same if both are written as ESM. But if one of them is ESM and the other is CJS, based on the currenct spec, we might get a static error depending on which one is imported first. E.g.:
+These CJS modules will work in Node independently of which one is imported first, the same applies if both are written as ESM. But if one of them is ESM and the other is CJS, based on the currenct spec, we might get a static error depending on which one is imported first. E.g.:
 
 ```js
 // even.js (ESM):
 import odd from "odd";
-export default function even() {  ... odd(n - 1) ... }
+export default function even() {
+    ...
+    odd(n - 1)
+    ...
+}
 
 // odd.js (DM)
-module.exports = function odd(n) { ... require('even')(n - 1) ... }
+module.exports = function odd(n) {
+    ...
+    require('even')(n - 1)
+    ...
+}
 ```
 
 If the binding for `odd` in `even.js` is not validated until it is accessed, the NCJS semantics are preserved, and this example works independently of which one is imported first.
