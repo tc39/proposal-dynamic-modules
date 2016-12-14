@@ -4,7 +4,7 @@ ECMAScript Proposal specs for the reform to preserve the order of execution for 
 
 Spec drafted by [@caridy](https://github.com/caridy).
 
-This proposal is currently [stage 0](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
+This proposal is currently [stage 1](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
 
 ## Rationale
 
