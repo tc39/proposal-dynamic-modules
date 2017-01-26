@@ -8,6 +8,14 @@
 	<title>dynamic modules reform</title>
 	<script type="application/json" id="menu-search-biblio">
 		[{
+			"type": "table",
+			"id": "table-38",
+			"number": 1,
+			"caption": "Table 1: Additional Fields of Source Text Module Records",
+			"namespace": "<no location>",
+			"location": "",
+			"key": "Table 1: Additional Fields of Source Text Module Records"
+		}, {
 			"type": "clause",
 			"id": "sec-module-namespace-exotic-objects-get-p-receiver",
 			"aoid": null,
@@ -19,24 +27,50 @@
 			"key": "[[Get]] (P, Receiver)"
 		}, {
 			"type": "clause",
-			"id": "sec-createimportbinding",
-			"aoid": null,
-			"title": "CreateImportBinding (N, M, N2)",
-			"titleHTML": "CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)",
-			"number": "2",
-			"namespace": "<no location>",
-			"location": "",
-			"key": "CreateImportBinding (N, M, N2)"
-		}, {
-			"type": "clause",
 			"id": "sec-resolveexport",
 			"aoid": null,
 			"title": "ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method",
 			"titleHTML": "ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method",
-			"number": "3",
+			"number": "2",
 			"namespace": "<no location>",
 			"location": "",
 			"key": "ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"
+		}, {
+			"type": "clause",
+			"id": "sec-moduledeclarationinstantiation",
+			"aoid": null,
+			"title": "ModuleDeclarationInstantiation( ) Concrete Method",
+			"titleHTML": "ModuleDeclarationInstantiation( ) Concrete Method",
+			"number": "3",
+			"namespace": "<no location>",
+			"location": "",
+			"key": "ModuleDeclarationInstantiation( ) Concrete Method"
+		}, {
+			"type": "clause",
+			"id": "sec-moduleevaluation",
+			"aoid": null,
+			"title": "ModuleEvaluation() Concrete Method",
+			"titleHTML": "ModuleEvaluation() Concrete Method",
+			"number": "4",
+			"namespace": "<no location>",
+			"location": "",
+			"key": "ModuleEvaluation() Concrete Method"
+		}, {
+			"type": "op",
+			"aoid": "ParseModule",
+			"refId": "sec-parsemodule",
+			"location": "",
+			"key": "ParseModule"
+		}, {
+			"type": "clause",
+			"id": "sec-parsemodule",
+			"aoid": "ParseModule",
+			"title": "ParseModule ( sourceText, realm, hostDefined )",
+			"titleHTML": "ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )",
+			"number": "5",
+			"namespace": "<no location>",
+			"location": "",
+			"key": "ParseModule ( sourceText, realm, hostDefined )"
 		}, {
 			"type": "clause",
 			"id": "sec-copyright-and-software-license",
@@ -60,14 +94,82 @@
 		<div id="menu-toc">
 			<ol class="toc">
 				<li><span class="item-toggle-none"></span><a href="#sec-module-namespace-exotic-objects-get-p-receiver" title="[[Get]] (P, Receiver)"><span class="secnum">1</span> [[Get]] (<var>P</var>, <var>Receiver</var>)</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-createimportbinding" title="CreateImportBinding (N, M, N2)"><span class="secnum">2</span> CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)</a></li>
-				<li><span class="item-toggle-none"></span><a href="#sec-resolveexport" title="ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"><span class="secnum">3</span> ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-resolveexport" title="ResolveExport( exportName, resolveSet, exportStarSet ) Concrete Method"><span class="secnum">2</span> ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-moduledeclarationinstantiation" title="ModuleDeclarationInstantiation( ) Concrete Method"><span class="secnum">3</span> ModuleDeclarationInstantiation( ) Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-moduleevaluation" title="ModuleEvaluation() Concrete Method"><span class="secnum">4</span> ModuleEvaluation() Concrete Method</a></li>
+				<li><span class="item-toggle-none"></span><a href="#sec-parsemodule" title="ParseModule ( sourceText, realm, hostDefined )"><span class="secnum">5</span> ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )</a></li>
 				<li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li>
 			</ol>
 		</div>
 	</div>
-	<h1 class="version">Stage 0 Draft / October 24, 2016</h1>
+	<h1 class="version">Stage 0 Draft / January 26, 2017</h1>
 	<h1 class="title">dynamic modules reform</h1>
+
+	<!-- es6num="15.2.1.16" -->
+	<emu-table id="table-38" caption="Additional Fields of Source Text Module Records">
+		<figure>
+			<figcaption>Table 1: Additional Fields of Source Text Module Records</figcaption>
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							Field Name
+
+						</th>
+						<th>
+							Value Type
+
+						</th>
+						<th>
+							Meaning
+
+						</th>
+					</tr>
+					<tr>
+						<td>
+							[[ImportEntries]]
+
+						</td>
+						<td>
+							<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ImportEntry Records
+
+						</td>
+						<td>
+							A
+							<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ImportEntry records derived from the code of this module.
+
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ins>[[PendingImportEntries]]</ins>
+						</td>
+						<td>
+							<ins><emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ImportEntry Records</ins>
+						</td>
+						<td>
+							<ins>A <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ImportEntry records that are pending to be validated.</ins>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							[[LocalExportEntries]]
+
+						</td>
+						<td>
+							<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ExportEntry Records
+
+						</td>
+						<td>
+							A
+							<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of ExportEntry records derived from the code of this module that correspond to declarations that occur within the module.
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</emu-table>
 
 	<!-- es6num="9.4.6.8" -->
 	<emu-clause id="sec-module-namespace-exotic-objects-get-p-receiver">
@@ -92,7 +194,7 @@
 				<li>Let <var>m</var> be <var>O</var>.[[Module]].</li>
 				<li>Let <var>binding</var> be ! <var>m</var>.ResolveExport(<var>P</var>, « », « »).</li>
 				<li><del>Assert: <var>binding</var> is neither <emu-val>null</emu-val> nor <code>"ambiguous"</code>.</del></li>
-				<li><ins>If <var>binding</var> is "pending" or <var>binding</var> is <emu-val>null</emu-val> or resolution is "ambiguous", throw a <emu-val>SyntaxError</emu-val> exception.</ins></li>
+				<li><ins>If <var>binding</var> is <code>"pending"</code> or <var>binding</var> is <emu-val>null</emu-val> or resolution is <code>"ambiguous"</code>, throw a <emu-val>SyntaxError</emu-val> exception.</ins></li>
 				<li>Let <var>targetModule</var> be <var>binding</var>.[[Module]].</li>
 				<li>Assert: <var>targetModule</var> is not
 					<emu-val>undefined</emu-val>.</li>
@@ -112,40 +214,9 @@
 		</emu-note>
 	</emu-clause>
 
-	<!-- es6num="8.1.1.5.5" -->
-	<emu-clause id="sec-createimportbinding">
-		<h1><span class="secnum">2</span>CreateImportBinding (<var>N</var>, <var>M</var>, <var>N2</var>)<span class="utils"><span class="anchor"><a href="#sec-createimportbinding">#</a></span></span>
-		</h1>
-		<p>The concrete
-			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> method CreateImportBinding for module Environment Records creates a new initialized immutable indirect binding for the name <var>N</var>. A binding must not already exist in this
-			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> for <var>N</var>. <var>M</var> is a
-			<emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>, and <var>N2</var> is the name of a binding that <ins>has to exist</ins><del>exists</del> in M's module
-			<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref><ins> after <var>M</var> is evaluated</ins>. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</p>
-
-		<emu-alg>
-			<ol>
-				<li>Let <var>envRec</var> be the module
-					<emu-xref href="#sec-environment-records"><a href="https://tc39.github.io/ecma262/#sec-environment-records">Environment Record</a></emu-xref> for which the method was invoked.</li>
-				<li>Assert: <var>envRec</var> does not already have a binding for <var>N</var>.</li>
-				<li>Assert: <var>M</var> is a
-					<emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>.</li>
-				<li><ins>Assert: <var>M</var> is an instantiated <emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>.</ins></li>
-				<li><del>Assert: When <var>M</var>.[[Environment]] is instantiated it will have a direct binding for <var>N2</var>.<del></del></del>
-				</li>
-				<li><ins>Assert: If <var>M</var> is a <emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref>, then <var>M</var>.[[Environment]] has a direct binding for <var>N2</var>.<ins></ins></ins>
-				</li>
-				<li>Create an immutable indirect binding in <var>envRec</var> for <var>N</var> that references <var>M</var> and <var>N2</var> as its target binding and record that the binding is initialized.</li>
-				<li>Return
-					<emu-xref aoid="NormalCompletion"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(
-					<emu-const>empty</emu-const>).
-				</li>
-			</ol>
-		</emu-alg>
-	</emu-clause>
-
 	<!-- es6num="15.2.1.16.3" -->
 	<emu-clause id="sec-resolveexport">
-		<h1><span class="secnum">3</span>ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-resolveexport">#</a></span></span>
+		<h1><span class="secnum">2</span>ResolveExport( <var>exportName</var>, <var>resolveSet</var>, <var>exportStarSet</var> ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-resolveexport">#</a></span></span>
 		</h1>
 		<p>The ResolveExport concrete method of a
 			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> with arguments <var>exportName</var>, <var>resolveSet</var>, and <var>exportStarSet</var> performs the following steps:</p>
@@ -253,12 +324,293 @@
 				<emu-val>null</emu-val> is returned. If the request is found to be ambiguous, the string <code>"ambiguous"</code> is returned.<ins> If the request is found to be pending, the string <code>"pending"</code> is returned.</ins></p>
 		</emu-note>
 	</emu-clause>
+
+
+	<!-- es6num="15.2.1.16.4" -->
+	<emu-clause id="sec-moduledeclarationinstantiation">
+		<h1><span class="secnum">3</span>ModuleDeclarationInstantiation( ) Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduledeclarationinstantiation">#</a></span></span>
+		</h1>
+		<p>The ModuleDeclarationInstantiation concrete method of a
+			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> performs the following steps:</p>
+		<emu-alg>
+			<ol>
+				<li>Let <var>module</var> be this
+					<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref>.</li>
+				<li>Let <var>realm</var> be <var>module</var>.[[Realm]].</li>
+				<li>Assert: <var>realm</var> is not
+					<emu-val>undefined</emu-val>.</li>
+				<li>Let <var>code</var> be <var>module</var>.[[ECMAScriptCode]].</li>
+				<li>If <var>module</var>.[[Environment]] is not
+					<emu-val>undefined</emu-val>, return
+					<emu-xref aoid="NormalCompletion"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(
+					<emu-const>empty</emu-const>).</li>
+				<li>Let <var>env</var> be
+					<emu-xref aoid="NewModuleEnvironment"><a href="https://tc39.github.io/ecma262/#sec-newmoduleenvironment">NewModuleEnvironment</a></emu-xref>(<var>realm</var>.[[GlobalEnv]]).</li>
+				<li>Set <var>module</var>.[[Environment]] to <var>env</var>.</li>
+				<li>For each String <var>required</var> that is an element of <var>module</var>.[[RequestedModules]] do,
+					<ol>
+						<li>NOTE: Before instantiating a module, all of the modules it requested must be available. An implementation may perform this test at any time prior to this point.</li>
+						<li>Let <var>requiredModule</var> be ?
+							<emu-xref aoid="HostResolveImportedModule"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref>(<var>module</var>, <var>required</var>).</li>
+						<li>Perform ? <var>requiredModule</var>.ModuleDeclarationInstantiation().</li>
+					</ol>
+				</li>
+				<li>For each ExportEntry
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> <var>e</var> in <var>module</var>.[[IndirectExportEntries]], do
+					<ol>
+						<li>Let <var>resolution</var> be ? <var>module</var>.ResolveExport(<var>e</var>.[[ExportName]], « », « »).</li>
+						<li>If <var>resolution</var> is
+							<emu-val>null</emu-val> or <var>resolution</var> is <code>"ambiguous"</code>, throw a
+							<emu-val>SyntaxError</emu-val> exception.</li>
+					</ol>
+				</li>
+				<li>Assert: All named exports from <var>module</var> are resolvable.</li>
+				<li>Let <var>envRec</var> be <var>env</var>'s
+					<emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref>.</li>
+				<li>For each ImportEntry
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> <var>in</var> in <var>module</var>.[[ImportEntries]], do
+					<ol>
+						<li>Let <var>importedModule</var> be !
+							<emu-xref aoid="HostResolveImportedModule"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref>(<var>module</var>, <var>in</var>.[[ModuleRequest]]).</li>
+						<li>NOTE: The above call cannot fail because imported module requests are a subset of <var>module</var>.[[RequestedModules]], and these have been resolved earlier in this algorithm.</li>
+						<li>If <var>in</var>.[[ImportName]] is <code>"*"</code>, then
+							<ol>
+								<li>Let <var>namespace</var> be ?
+									<emu-xref aoid="GetModuleNamespace"><a href="https://tc39.github.io/ecma262/#sec-getmodulenamespace">GetModuleNamespace</a></emu-xref>(<var>importedModule</var>).</li>
+								<li>Perform ! <var>envRec</var>.CreateImmutableBinding(<var>in</var>.[[LocalName]],
+									<emu-val>true</emu-val>).</li>
+								<li>Call <var>envRec</var>.InitializeBinding(<var>in</var>.[[LocalName]], <var>namespace</var>).</li>
+							</ol>
+						</li>
+						<li>Else,
+							<ol>
+								<li>Let <var>resolution</var> be ? <var>importedModule</var>.ResolveExport(<var>in</var>.[[ImportName]], « », « »).</li>
+								<li>If <var>resolution</var> is
+									<emu-val>null</emu-val> or <var>resolution</var> is <code>"ambiguous"</code>, throw a
+									<emu-val>SyntaxError</emu-val> exception.</li>
+								<li><ins>If <var>resolution</var> is <code>"pending"</code>, then append <var>in</var> to <var>module</var>.[[PendingImportEntries]].<ins></ins></ins>
+								</li>
+								<li><ins>Else, </ins>call <var>envRec</var>.CreateImportBinding(<var>in</var>.[[LocalName]], <var>resolution</var>.[[Module]], <var>resolution</var>.[[BindingName]]).</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li>Let <var>varDeclarations</var> be the VarScopedDeclarations of <var>code</var>.</li>
+				<li>Let <var>declaredVarNames</var> be a new empty
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li>
+				<li>For each element <var>d</var> in <var>varDeclarations</var> do
+					<ol>
+						<li>For each element <var>dn</var> of the BoundNames of <var>d</var> do
+							<ol>
+								<li>If <var>dn</var> is not an element of <var>declaredVarNames</var>, then
+									<ol>
+										<li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>dn</var>,
+											<emu-val>false</emu-val>).</li>
+										<li>Call <var>envRec</var>.InitializeBinding(<var>dn</var>,
+											<emu-val>undefined</emu-val>).</li>
+										<li>Append <var>dn</var> to <var>declaredVarNames</var>.</li>
+									</ol>
+								</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li>Let <var>lexDeclarations</var> be the LexicallyScopedDeclarations of <var>code</var>.</li>
+				<li>For each element <var>d</var> in <var>lexDeclarations</var> do
+					<ol>
+						<li>For each element <var>dn</var> of the BoundNames of <var>d</var> do
+							<ol>
+								<li>If IsConstantDeclaration of <var>d</var> is
+									<emu-val>true</emu-val>, then
+									<ol>
+										<li>Perform ! <var>envRec</var>.CreateImmutableBinding(<var>dn</var>,
+											<emu-val>true</emu-val>).</li>
+									</ol>
+								</li>
+								<li>Else,
+									<ol>
+										<li>Perform ! <var>envRec</var>.CreateMutableBinding(<var>dn</var>,
+											<emu-val>false</emu-val>).</li>
+									</ol>
+								</li>
+								<li>If <var>d</var> is a
+									<emu-nt><a href="https://tc39.github.io/ecma262/#prod-GeneratorDeclaration">GeneratorDeclaration</a></emu-nt> production or a
+									<emu-nt><a href="https://tc39.github.io/ecma262/#prod-FunctionDeclaration">FunctionDeclaration</a></emu-nt> production, then
+									<ol>
+										<li>Let <var>fo</var> be the result of performing InstantiateFunctionObject for <var>d</var> with argument <var>env</var>.</li>
+										<li>Call <var>envRec</var>.InitializeBinding(<var>dn</var>, <var>fo</var>).</li>
+									</ol>
+								</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li>Return
+					<emu-xref aoid="NormalCompletion"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(
+					<emu-const>empty</emu-const>).
+				</li>
+			</ol>
+		</emu-alg>
+	</emu-clause>
+
+	<!-- es6num="15.2.1.16.5" -->
+	<emu-clause id="sec-moduleevaluation">
+		<h1><span class="secnum">4</span>ModuleEvaluation() Concrete Method<span class="utils"><span class="anchor"><a href="#sec-moduleevaluation">#</a></span></span>
+		</h1>
+		<p>The ModuleEvaluation concrete method of a
+			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> performs the following steps:</p>
+		<emu-alg>
+			<ol>
+				<li>Let <var>module</var> be this
+					<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref>.</li>
+				<li>Assert: ModuleDeclarationInstantiation has already been invoked on <var>module</var> and successfully completed.</li>
+				<li>Assert: <var>module</var>.[[Realm]] is not
+					<emu-val>undefined</emu-val>.</li>
+				<li>If <var>module</var>.[[Evaluated]] is
+					<emu-val>true</emu-val>, return
+					<emu-val>undefined</emu-val>.</li>
+				<li>Set <var>module</var>.[[Evaluated]] to
+					<emu-val>true</emu-val>.</li>
+				<li>For each String <var>required</var> that is an element of <var>module</var>.[[RequestedModules]] do,
+					<ol>
+						<li>Let <var>requiredModule</var> be !
+							<emu-xref aoid="HostResolveImportedModule"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref>(<var>module</var>, <var>required</var>).</li>
+						<li>NOTE: ModuleDeclarationInstantiation must be completed prior to invoking this method, so every requested module is guaranteed to resolve successfully.</li>
+						<li>Perform ? <var>requiredModule</var>.ModuleEvaluation().</li>
+					</ol>
+				</li>
+				<li><ins>Let <var>env</var> be <var>module</var>.[[Environment]]</ins>.</li>
+				<li><ins>Let <var>envRec</var> be <var>env</var>'s <emu-xref href="#sec-lexical-environments"><a href="https://tc39.github.io/ecma262/#sec-lexical-environments">EnvironmentRecord</a></emu-xref></ins>.</li>
+				<li><ins>For each ImportEntry <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> <var>in</var> in <var>module</var>.[[PendingImportEntries]], do</ins>
+					<ol>
+						<li><ins>Let <var>resolution</var> be ? <var>importedModule</var>.ResolveExport(<var>in</var>.[[ImportName]], « », « »)</ins>.</li>
+						<li><ins>If <var>resolution</var> is <emu-val>null</emu-val> or <var>resolution</var> is <code>"ambiguous"</code> or <var>resultion</var> is <code>"pending"</code>, throw a <emu-val>SyntaxError</emu-val> exception</ins>.</li>
+						<li><ins>Remove ImportEntry <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> <var>in</var> from <var>module</var>.[[PendingImportEntries]]</ins>.</li>
+						<li><ins>Call <var>envRec</var>.CreateImportBinding(<var>in</var>.[[LocalName]], <var>resolution</var>.[[Module]</ins>.</li>
+					</ol>
+				</li>
+				<li>Let <var>moduleCxt</var> be a new ECMAScript code
+					<emu-xref href="#sec-execution-contexts"><a href="https://tc39.github.io/ecma262/#sec-execution-contexts">execution context</a></emu-xref>.</li>
+				<li>Set the Function of <var>moduleCxt</var> to
+					<emu-val>null</emu-val>.</li>
+				<li>Set the
+					<emu-xref href="#realm"><a href="https://tc39.github.io/ecma262/#realm">Realm</a></emu-xref> of <var>moduleCxt</var> to <var>module</var>.[[Realm]].</li>
+				<li>Set the ScriptOrModule of <var>moduleCxt</var> to <var>module</var>.</li>
+				<li>Assert: <var>module</var> has been linked and declarations in its
+					<emu-xref href="#module-environment"><a href="https://tc39.github.io/ecma262/#module-environment">module environment</a></emu-xref> have been instantiated.</li>
+				<li>Set the VariableEnvironment of <var>moduleCxt</var> to <var>module</var>.[[Environment]].</li>
+				<li>Set the LexicalEnvironment of <var>moduleCxt</var> to <var>module</var>.[[Environment]].</li>
+				<li>Suspend the currently
+					<emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li>
+				<li>Push <var>moduleCxt</var> on to the
+					<emu-xref href="#execution-context-stack"><a href="https://tc39.github.io/ecma262/#execution-context-stack">execution context stack</a></emu-xref>; <var>moduleCxt</var> is now the
+					<emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li>
+				<li>Let <var>result</var> be the result of evaluating <var>module</var>.[[ECMAScriptCode]].</li>
+				<li>Suspend <var>moduleCxt</var> and remove it from the
+					<emu-xref href="#execution-context-stack"><a href="https://tc39.github.io/ecma262/#execution-context-stack">execution context stack</a></emu-xref>.</li>
+				<li>Resume the context that is now on the top of the
+					<emu-xref href="#execution-context-stack"><a href="https://tc39.github.io/ecma262/#execution-context-stack">execution context stack</a></emu-xref> as the
+					<emu-xref href="#running-execution-context"><a href="https://tc39.github.io/ecma262/#running-execution-context">running execution context</a></emu-xref>.</li>
+				<li>Return
+					<emu-xref aoid="Completion"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">Completion</a></emu-xref>(<var>result</var>).
+				</li>
+			</ol>
+		</emu-alg>
+	</emu-clause>
+
+	<!-- es6num="15.2.1.16.1" -->
+	<emu-clause id="sec-parsemodule" aoid="ParseModule">
+		<h1><span class="secnum">5</span>ParseModule ( <var>sourceText</var>, <var>realm</var>, <var>hostDefined</var> )<span class="utils"><span class="anchor"><a href="#sec-parsemodule">#</a></span></span>
+		</h1>
+		<p>The abstract operation ParseModule with arguments <var>sourceText</var>, <var>realm</var>, and <var>hostDefined</var> creates a
+			<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> based upon the result of parsing <var>sourceText</var> as a
+			<emu-nt><a href="https://tc39.github.io/ecma262/#prod-Module">Module</a></emu-nt>. ParseModule performs the following steps:</p>
+		<emu-alg>
+			<ol>
+				<li>Assert: <var>sourceText</var> is an ECMAScript source text (see clause
+					<emu-xref href="#sec-ecmascript-language-source-code"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-language-source-code">10</a></emu-xref>).</li>
+				<li>Parse <var>sourceText</var> using
+					<emu-nt><a href="https://tc39.github.io/ecma262/#prod-Module">Module</a></emu-nt> as the goal symbol and analyze the parse result for any Early Error conditions. If the parse was successful and no early errors were found, let <var>body</var> be the resulting parse tree. Otherwise, let <var>body</var> be a
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of one or more
+					<emu-val>SyntaxError</emu-val> or
+					<emu-val>ReferenceError</emu-val> objects representing the parsing errors and/or early errors. Parsing and
+					<emu-xref href="#early-error"><a href="https://tc39.github.io/ecma262/#early-error">early error</a></emu-xref> detection may be interweaved in an implementation dependent manner. If more than one parsing error or
+					<emu-xref href="#early-error"><a href="https://tc39.github.io/ecma262/#early-error">early error</a></emu-xref> is present, the number and ordering of error objects in the list is implementation dependent, but at least one must be present.</li>
+				<li>If <var>body</var> is a
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of errors, then return <var>body</var>.</li>
+				<li>Let <var>requestedModules</var> be the ModuleRequests of <var>body</var>.</li>
+				<li>Let <var>importEntries</var> be ImportEntries of <var>body</var>.</li>
+				<li><ins>Let <var>pendingImportEntries</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.<ins></ins></ins>
+				</li>
+				<li>Let <var>importedBoundNames</var> be
+					<emu-xref aoid="ImportedLocalNames"><a href="https://tc39.github.io/ecma262/#sec-importedlocalnames">ImportedLocalNames</a></emu-xref>(<var>importEntries</var>).</li>
+				<li>Let <var>indirectExportEntries</var> be a new empty
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li>
+				<li>Let <var>localExportEntries</var> be a new empty
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li>
+				<li>Let <var>starExportEntries</var> be a new empty
+					<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li>
+				<li>Let <var>exportEntries</var> be ExportEntries of <var>body</var>.</li>
+				<li>For each record <var>ee</var> in <var>exportEntries</var>, do
+					<ol>
+						<li>If <var>ee</var>.[[ModuleRequest]] is
+							<emu-val>null</emu-val>, then
+							<ol>
+								<li>If <var>ee</var>.[[LocalName]] is not an element of <var>importedBoundNames</var>, then
+									<ol>
+										<li>Append <var>ee</var> to <var>localExportEntries</var>.</li>
+									</ol>
+								</li>
+								<li>Else,
+									<ol>
+										<li>Let <var>ie</var> be the element of <var>importEntries</var> whose [[LocalName]] is the same as <var>ee</var>.[[LocalName]].</li>
+										<li>If <var>ie</var>.[[ImportName]] is <code>"*"</code>, then
+											<ol>
+												<li>Assert: This is a re-export of an imported module namespace object.</li>
+												<li>Append <var>ee</var> to <var>localExportEntries</var>.</li>
+											</ol>
+										</li>
+										<li>Else this is a re-export of a single name,
+											<ol>
+												<li>Append to <var>indirectExportEntries</var> the
+													<emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> {[[ModuleRequest]]: <var>ie</var>.[[ModuleRequest]], [[ImportName]]: <var>ie</var>.[[ImportName]], [[LocalName]]:
+													<emu-val>null</emu-val>, [[ExportName]]: <var>ee</var>.[[ExportName]] }.</li>
+											</ol>
+										</li>
+									</ol>
+								</li>
+							</ol>
+						</li>
+						<li>Else if <var>ee</var>.[[ImportName]] is <code>"*"</code>, then
+							<ol>
+								<li>Append <var>ee</var> to <var>starExportEntries</var>.</li>
+							</ol>
+						</li>
+						<li>Else,
+							<ol>
+								<li>Append <var>ee</var> to <var>indirectExportEntries</var>.</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li>Return
+					<emu-xref href="#sec-source-text-module-records"><a href="https://tc39.github.io/ecma262/#sec-source-text-module-records">Source Text Module Record</a></emu-xref> {[[Realm]]: <var>realm</var>, [[Environment]]:
+					<emu-val>undefined</emu-val>, [[HostDefined]]: <var>hostDefined</var>, [[Namespace]]:
+					<emu-val>undefined</emu-val>, [[Evaluated]]:
+					<emu-val>false</emu-val>, [[ECMAScriptCode]]: <var>body</var>, [[RequestedModules]]: <var>requestedModules</var>, [[ImportEntries]]: <var>importEntries</var>, <ins>[[PendingImportEntries]]: <var>pendingImportEntries</var>, </ins>[[LocalExportEntries]]: <var>localExportEntries</var>, [[StarExportEntries]]: <var>starExportEntries</var>, [[IndirectExportEntries]]: <var>indirectExportEntries</var>}.
+				</li>
+			</ol>
+		</emu-alg>
+		<emu-note><span class="note">Note</span>
+			<p>An implementation may parse module source text and analyze it for Early Error conditions prior to the evaluation of ParseModule for that module source text. However, the reporting of any errors must be deferred until the point where this specification actually performs ParseModule upon that source text.</p>
+		</emu-note>
+	</emu-clause>
 	<emu-annex id="sec-copyright-and-software-license">
 		<h1><span class="secnum">A</span>Copyright &amp; Software License<span class="utils"><span class="anchor"><a href="#sec-copyright-and-software-license">#</a></span></span>
 		</h1>
 
 		<h2>Copyright Notice</h2>
-		<p>© 2016 Caridy Patiño</p>
+		<p>© 2017 Caridy Patiño</p>
 
 		<h2>Software License</h2>
 		<p>All Software contained in this document ("Software") is protected by copyright and is being made available under the "BSD License", included below. This Software may be subject to third party rights (rights from parties other than Ecma International), including patent rights, and no licenses under such third party rights are granted under this license even if the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT http://www.ecma-international.org/memento/codeofconduct.htm FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS.</p>

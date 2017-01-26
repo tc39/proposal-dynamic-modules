@@ -4,7 +4,7 @@ ECMAScript Proposal specs for the reform to preserve the order of execution for 
 
 Spec drafted by [@caridy](https://github.com/caridy).
 
-This proposal is currently [stage 0](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
+This proposal is currently [stage 1](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
 
 ## Rationale
 
@@ -12,7 +12,9 @@ ES module spec requires all Module Records to know all the exports during `Modul
 
 ## Preserving the order of evaluation for Dynamic Module Records
 
-This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. This simple change allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that the imported bindings from the corresponding environment record is in TDZ until it gets populated by the Dynamic Module Record.
+This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. Additionally, this proposal introduces a new internal slot `[[PendingImportEntries]]` on Source Text Module Records that can be used to track down the import entries that are coming from Dynamic Module Records that hasn't been evaluated yet. As a result, a Dynamic Module Record can resolve to `"pending"` during the `ModuleDeclarationInstantiation()` phase to signal that the validation or assertion about the bindings should be deferred to the ModuleEvaluation() phase for the Source Text Module Record importing from a Dynamic Module Record.
+
+These changes allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that the imported bindings from the corresponding environment record is in TDZ until it gets populated by the Dynamic Module Record.
 
 ## Enabling Circular Dependencies with Dynamic Module Records
 
@@ -53,7 +55,12 @@ module.exports = function odd(n) {
 }
 ```
 
-If the binding for `odd` in `even.js` is not validated until it is accessed, the NCJS semantics are preserved, and this example works independently of which one is imported first.
+If the binding for `odd` in `even.js` is not validated until it is accessed or the entire module graph has been evaluated, the NCJS semantics are preserved, and this example works independently of which one is imported first.
+
+## SyntaxError in Source Text Module Records
+
+* Throw during `ModuleDeclarationInstantiation` if the indirect import entry resolves to *null* or *ambiguous*.
+* Throw during `ModuleEvaluation` if a pending import entry resolves to *null* or *ambiguous* or *pending* right before evaluating the module itself.
 
 ## Compromises
 
