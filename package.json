@@ -4,7 +4,7 @@
 	"description": "ECMAScript spec proposal to support dynamic modules",
 	"scripts": {
 		"build": "ecmarkup spec.emu --js=spec.js --css=spec.css | js-beautify -f - --type=html -t > index.html",
-		"prepublish": "npm run build && echo >&2 'no publishing' && exit 255"
+		"pr1epublish": "npm run build && echo >&2 'no publishing' && exit 255"
 	},
 	"repository": {
 		"type": "git",
@@ -30,7 +30,7 @@
 	"homepage": "https://github.com/caridy/proposal-dynamic-modules#readme",
 	"dependencies": {},
 	"devDependencies": {
-		"ecmarkup": "^3.5.1",
+		"ecmarkup": "^3.4.0",
 		"js-beautify": "^1.6.4"
 	}
 }
