@@ -75,4 +75,4 @@ Most of the discussion around this topic is condenced in the meetings notes from
 
 ## Spec
 
-You can view the spec rendered as [HTML](https://rawgit.com/caridy/proposal-dynamic-modules/master/index.html).
+You can view the spec rendered as [HTML](https://rawgit.com/tc39/proposal-dynamic-modules/master/index.html).
