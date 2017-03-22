@@ -12,9 +12,9 @@ ES module spec requires all Module Records to know all the exports during `Modul
 
 ## Preserving the order of evaluation for Dynamic Module Records
 
-This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. Additionally, this proposal introduces a new internal slot `[[PendingImportEntries]]` on Source Text Module Records that can be used to track down the import entries that are coming from Dynamic Module Records that hasn't been evaluated yet. As a result, a Dynamic Module Record can resolve to `"pending"` during the `ModuleDeclarationInstantiation()` phase to signal that the validation or assertion about the bindings should be deferred to the ModuleEvaluation() phase for the Source Text Module Record importing from a Dynamic Module Record.
+This proposal introduces the `"pending"` resolution value when calling `ResolveExport()` for a Dynamic Module Record. Additionally, this proposal introduces a new internal slot `[[PendingImportEntries]]` on Source Text Module Records that is used to track the import entries that are coming from Dynamic Module Records that hasn't been evaluated yet. As a result, calling `ResolveExport()` on the Dynamic Module Record during the `ModuleDeclarationInstantiation()` phase can resolve to `"pending"` to signal that the validation or assertion about the bindings should be deferred to the `ModuleEvaluation()` phase for the Source Text Module Record importing from a Dynamic Module Record.
 
-These changes allow us to identify, during the linking phase, a binding that could potentially be in TDZ and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that the imported bindings from the corresponding environment record is in TDZ until it gets populated by the Dynamic Module Record.
+These changes allow us to identify, during the linking phase, an import binding that cannot be created yet and does not require explicit assertion during this phase. As a result, we can defer the evaluation of a Dynamic Module Record to preserve the execution order, and we do so under the assumption that the imported bindings from the Dynamic Module Record will gets populated after it is evaluated.
 
 ## Enabling Circular Dependencies with Dynamic Module Records
 
@@ -55,16 +55,16 @@ module.exports = function odd(n) {
 }
 ```
 
-If the binding for `odd` in `even.js` is not validated until it is accessed or the entire module graph has been evaluated, the NCJS semantics are preserved, and this example works independently of which one is imported first.
+If the binding for `odd` in `even.js` is not created until after `odd.js` is evaluated, the NCJS semantics are preserved, and this example works independently of which one is imported first.
 
 ## SyntaxError in Source Text Module Records
 
 * Throw during `ModuleDeclarationInstantiation` if the indirect import entry resolves to *null* or *ambiguous*.
-* Throw during `ModuleEvaluation` if a pending import entry resolves to *null* or *ambiguous* or *pending* right before evaluating the module itself.
+* Throw during `ModuleEvaluation` if a pending import entry resolves to *null* or *ambiguous* or *pending* after evaluating all dependencies, and before evaluating the source text.
 
 ## Compromises
 
-With this proposal, the statically verifiable mechanism introduced by ESM can only be enforced in a ES Module that is importing from another ES Module, and any interaction with Dynamic Module Records will rely on a runtime errors (TDZ when accessing named exports).
+With this proposal, the statically verifiable mechanism introduced by ESM can only be enforced in a ES Module that is importing from another ES Module, and any interaction with Dynamic Module Records will be deferred to the `ModuleEvaluation()` phase for Dynamic Module Records that were not previously evaluated.
 
 ## Additional Information
 
