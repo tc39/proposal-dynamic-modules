@@ -2,9 +2,17 @@
 
 ECMAScript Proposal specs for the reform to preserve the order of execution for dynamic modules.
 
-Spec drafted by [@caridy](https://github.com/caridy).
+## Champions
+
+* [@caridy](https://github.com/caridy).
+* [@dherman](https://github.com/dherman).
 
 This proposal is currently [stage 1](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
+
+## Slides
+
+* [Update 1 - Nov 2016](https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.p)
+* [Update 2 - March 2017](https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.g1f19d52d1f_0_0)
 
 ## Rationale
 
