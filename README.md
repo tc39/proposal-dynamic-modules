@@ -1,4 +1,4 @@
-# Dynamic Module Reform
+# Dynamic Module Reform (REJECTED)
 
 ECMAScript Proposal specs for the reform to preserve the order of execution for dynamic modules.
 
@@ -7,7 +7,7 @@ ECMAScript Proposal specs for the reform to preserve the order of execution for 
 * [@caridy](https://github.com/caridy).
 * [@dherman](https://github.com/dherman).
 
-This proposal is currently [stage 1](https://github.com/tc39/ecma262) of the [process](https://tc39.github.io/process-document/).
+This proposal was rejected in favor of preserving the current semantics. You can read more about this decision in the [tc39-notes](https://github.com/rwaldron/tc39-notes/blob/master/es8/2017-03/mar-23.md#10iia-dynamic-module-reform-for-stage-2). The last slide from [Update 2 - March 2017](https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.g1f1f22a6f5_1_31) shows why this proposal is faulty.
 
 ## Slides
 
